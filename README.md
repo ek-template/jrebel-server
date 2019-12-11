@@ -22,5 +22,6 @@ JetBrains Products
 
 ## Feedback
 
-+ issue: https://gitee.com/ek-plugs/jrebel-server/issues
++ github issue: https://github.com/ek-template/jrebel-server/issues
++ gitee issue: https://gitee.com/ek-plugs/jrebel-server/issues
 + Builder:qierkang E-mail:xyqierkang@163.com Wechat:qekang
