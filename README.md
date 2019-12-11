@@ -9,7 +9,6 @@ jrebel 提供服务
 ## Docker
 Build image
 ```
-mvn package 
 docker build -t jrebel-server .
 ```
 
