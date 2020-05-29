@@ -70,7 +70,7 @@ public class RunServer extends AbstractHandler {
         server.setHandler(new RunServer());
         server.start();
         System.out.println("是，程序员设计了程序，还是，程序造就了程序员？程序，程序员——你的名字，我的姓氏");
-        System.out.println("@Author xyqierkang@163.com\n" + "Blog https://blog.csdn.net/qierkang");
+        System.out.println("@Author xyqierkang@163.com\n" + "Blog https://blog.csdn.net/qierkang Home https://www.qekang.com");
         System.out.println("License Server started at http://localhost:" + port);
         System.out.println("JetBrains Activation address was: http://localhost:" + port + "/");
         System.out.println("JRebel address was: http://localhost:" + port + "/{tokenname}, with any email.");
@@ -312,8 +312,11 @@ public class RunServer extends AbstractHandler {
         html.append("<p>一键地址直接使用: 【<span style='color:red'>").append("https://jrebel.qekang.com").append("/").append(UUID.randomUUID().toString()).append("</span>】");
         html.append("<hr/>");
         html.append("<p><em>Builder:qierkang E-mail:xyqierkang@163.com  Wechat:qekang <span id=\"text\"></span></em></p>");
-        html.append("<p><h3><a href='https://blog.csdn.net/qierkang' target='_blank' style='text-decoration:none;'>Author Blog:)</a></h3></p>");
+        html.append("<p><h3><a href='https://www.qekang.com' target='_blank' style='text-decoration:none;'>Home:)</a>&nbsp;&nbsp;&nbsp;<a href='https://blog.csdn.net/qierkang' target='_blank' style='text-decoration:none;'>CSDN:)</a></h3></p>");
+        html.append("<img src='https://www.qekang.com/code.jpg' width='800' height='400'/>");
+        html.append("<br/>");
         html.append("<img src='https://img-blog.csdnimg.cn/20191127182857244.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpZXJrYW5n,size_16,color_FFFFFF,t_70' width='800' height='550'/>");
+        html.append("<br/><br/><br/>");
         response.getWriter().println(html);
     }
 }
