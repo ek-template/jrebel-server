@@ -9,7 +9,7 @@ jrebel 提供服务
 ## Docker
 Build image
 ```
-docker build -t jrebel-server .
+docker build -t qierkang/jrebel-server .
 ```
 
 start container
