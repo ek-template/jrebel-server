@@ -303,7 +303,37 @@ public class RunServer extends AbstractHandler {
                 "        width: 60em;\n" +
                 "        margin: 0 auto;\n" +
                 "        font-family: Tahoma, Verdana, Arial, sans-serif;\n" +
-                "    }\n" +
+                "    }" +
+                "img.xk{\n" +
+                "            position: absolute;\n" +
+                "            background-color: black;\n" +
+                "            width: 300px;\n" +
+                "            height: 200px;\n" +
+                "            border: 6px solid white;\n" +
+                "            box-shadow: 1px 1px 5px #333333;\n" +
+                "        }\n" +
+                "img.code{\n" +
+                "            background-color: black;\n" +
+                "            width: 70%;\n" +
+                "            border: 6px solid white;\n" +
+                "            box-shadow: 1px 1px 5px #333333;\n" +
+                "            float: left;\n" +
+                "        }\n" +
+                "        div{position: absolute;\n" +
+                "    left: 200px;\n" +
+                "    top: 100px;\n" +
+                "    text-align: center;\n" +
+                "    font-size: 14px;\n" +
+                "    padding: 10px;\n" +
+                "    border: 1px solid #990;\n" +
+                "    background-color: white;\n" +
+                "    box-shadow: 1px 1px 5px #333333;\n" +
+                "    width: 150px;\n" +
+                "    transform: rotate(30deg)" +
+                "   }\n" +
+                "        img{\n" +
+                "            width: 100%;\n" +
+                "        }" +
                 "</style>");
         html.append("<h1><a href='https://blog.csdn.net/qierkang/article/details/95095954' target='_blank' style='text-decoration:none;' >Hello,This is a Jrebel & JetBrains License Server!</a></h1>");
         html.append("<p>JetBrains Activation address was: <span style='color:red'>").append(licenseUrl).append("/{guid}");
@@ -313,9 +343,10 @@ public class RunServer extends AbstractHandler {
         html.append("<hr/>");
         html.append("<p><em>Builder:qierkang E-mail:xyqierkang@163.com  Wechat:qekang <span id=\"text\"></span></em></p>");
         html.append("<p><h3><a href='https://www.qekang.com' target='_blank' style='text-decoration:none;'>Home:)</a>&nbsp;&nbsp;&nbsp;<a href='https://blog.csdn.net/qierkang' target='_blank' style='text-decoration:none;'>CSDN:)</a></h3></p>");
-        html.append("<img src='https://www.qekang.com/code.jpg' width='800' height='400'/>");
+        html.append("<div>服务将到期,凝天下力量!<img src='https://www.qekang.com/wechatPay.jpeg'/><img src='https://www.qekang.com/aliPay.jpeg'/></div>");
+        html.append("<img src='https://www.qekang.com/code.jpg' class='code'/>");
         html.append("<br/>");
-        html.append("<img src='https://img-blog.csdnimg.cn/20191127182857244.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpZXJrYW5n,size_16,color_FFFFFF,t_70' width='800' height='550'/>");
+        html.append("<img class='code' src='https://img-blog.csdnimg.cn/20191127182857244.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpZXJrYW5n,size_16,color_FFFFFF,t_70' width='800' height='550'/>");
         html.append("<br/><br/><br/>");
         response.getWriter().println(html);
     }
