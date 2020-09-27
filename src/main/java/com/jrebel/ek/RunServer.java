@@ -343,7 +343,7 @@ public class RunServer extends AbstractHandler {
         html.append("<hr/>");
         html.append("<p><em>Builder:qierkang E-mail:xyqierkang@163.com  Wechat:qekang <span id=\"text\"></span></em></p>");
         html.append("<p><h3><a href='https://www.qekang.com' target='_blank' style='text-decoration:none;'>Home:)</a>&nbsp;&nbsp;&nbsp;<a href='https://blog.csdn.net/qierkang' target='_blank' style='text-decoration:none;'>CSDN:)</a></h3></p>");
-        html.append("<div>服务将到期,凝天下力量!<img src='https://www.qekang.com/wechatPay.jpeg'/><img src='https://www.qekang.com/aliPay.jpeg'/></div>");
+        html.append("<div>服务器到期,聚开源力量!<img src='https://www.qekang.com/wechatPay.jpeg'/><img src='https://www.qekang.com/aliPay.jpeg'/></div>");
         html.append("<img src='https://www.qekang.com/code.jpg' class='code'/>");
         html.append("<br/>");
         html.append("<img class='code' src='https://img-blog.csdnimg.cn/20191127182857244.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpZXJrYW5n,size_16,color_FFFFFF,t_70' width='800' height='550'/>");
