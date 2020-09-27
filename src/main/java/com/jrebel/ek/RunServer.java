@@ -319,8 +319,8 @@ public class RunServer extends AbstractHandler {
                 "            box-shadow: 1px 1px 5px #333333;\n" +
                 "            float: left;\n" +
                 "        }\n" +
-                "        div{position: absolute;\n" +
-                "    left: 200px;\n" +
+                "        div{left: 200px;\n" +
+                "    float: left;\n" +
                 "    top: 100px;\n" +
                 "    text-align: center;\n" +
                 "    font-size: 14px;\n" +
@@ -329,8 +329,8 @@ public class RunServer extends AbstractHandler {
                 "    background-color: white;\n" +
                 "    box-shadow: 1px 1px 5px #333333;\n" +
                 "    width: 150px;\n" +
-                "    transform: rotate(30deg)" +
-                "   }\n" +
+                "    transform: rotate(25deg);\n" +
+                "    margin-right: 100px;}\n" +
                 "        img{\n" +
                 "            width: 100%;\n" +
                 "        }" +
