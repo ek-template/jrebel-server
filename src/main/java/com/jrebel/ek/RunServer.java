@@ -13,16 +13,23 @@ package com.jrebel.ek;
 
 import com.jrebel.ek.util.JrebelSign;
 import com.jrebel.ek.util.rsasign;
+
 import net.sf.json.JSONObject;
+
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * *********************************************************
@@ -82,23 +89,23 @@ public class RunServer extends AbstractHandler {
     public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         System.out.println(target);
-        if (target.equals("/")) {
+        if ("/".equals(target)) {
             indexHandler(target, baseRequest, request, response);
-        } else if (target.equals("/jrebel/leases")) {
+        } else if ("/jrebel/leases".equals(target)) {
             jrebelLeasesHandler(target, baseRequest, request, response);
-        } else if (target.equals("/jrebel/leases/1")) {
+        } else if ("/jrebel/leases/1".equals(target)) {
             jrebelLeases1Handler(target, baseRequest, request, response);
-        } else if (target.equals("/agent/leases")) {
+        } else if ("/agent/leases".equals(target)) {
             jrebelLeasesHandler(target, baseRequest, request, response);
-        } else if (target.equals("/agent/leases/1")) {
+        } else if ("/agent/leases/1".equals(target)) {
             jrebelLeases1Handler(target, baseRequest, request, response);
-        } else if (target.equals("/jrebel/validate-connection")) {
+        } else if ("/jrebel/validate-connection".equals(target)) {
             jrebelValidateHandler(target, baseRequest, request, response);
-        } else if (target.equals("/rpc/ping.action")) {
+        } else if ("/rpc/ping.action".equals(target)) {
             pingHandler(target, baseRequest, request, response);
-        } else if (target.equals("/rpc/obtainTicket.action")) {
+        } else if ("/rpc/obtainTicket.action".equals(target)) {
             obtainTicketHandler(target, baseRequest, request, response);
-        } else if (target.equals("/rpc/releaseTicket.action")) {
+        } else if ("/rpc/releaseTicket.action".equals(target)) {
             releaseTicketHandler(target, baseRequest, request, response);
         } else {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
@@ -180,7 +187,7 @@ public class RunServer extends AbstractHandler {
                 "    \"serverRandomness\": \"H2ulzLlh7E0=\",\n" +
                 "    \"seatPoolType\": \"standalone\",\n" +
                 "    \"statusCode\": \"SUCCESS\",\n" +
-                "    \"offline\": " + String.valueOf(offline) + ",\n" +
+                "    \"offline\": " + offline + ",\n" +
                 "    \"validFrom\": " + validFrom + ",\n" +
                 "    \"validUntil\": " + validUntil + ",\n" +
                 "    \"company\": \"Administrator\",\n" +
