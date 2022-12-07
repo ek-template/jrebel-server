@@ -346,7 +346,8 @@ public class RunServer extends AbstractHandler {
         html.append("<p>JetBrains Activation address was: <span style='color:red'>").append(licenseUrl).append("/{guid}");
         html.append("<p><h3>GUID address: <a href='https://www.guidgen.com/' target='_blank' style='text-decoration:none;'>GUID</a></h3></p>");
         html.append("<p>Demo JRebel address was: 【<span style='color:red'>").append(licenseUrl).append("/").append(UUID.randomUUID().toString()).append("</span>】, with any email.");
-        html.append("<p>一键地址直接使用: 【<span style='color:red'>").append("https://jrebel.qekang.com").append("/").append(UUID.randomUUID().toString()).append("</span>】");
+        html.append("<p>一键地址直接使用: 【<span style='color:red'>").append("http://jrebel.qekang.com").append("/").append(UUID.randomUUID().toString()).append("</span>】");
+        html.append("<p> <h4><span style='color:red'>").append("【公告📢：服务器到期最近在做服务迁移，有些许不稳定尽情谅解】").append("</span></h4>");
         html.append("<hr/>");
         html.append("<p><em>Builder:qierkang E-mail:xyqierkang@163.com  Wechat:qekang <span id=\"text\"></span></em></p>");
         html.append("<p><h3><a href='https://www.qekang.com' target='_blank' style='text-decoration:none;'>Home:)</a>&nbsp;&nbsp;&nbsp;<a href='https://blog.csdn.net/qierkang' target='_blank' style='text-decoration:none;'>CSDN:)</a></h3></p>");
