@@ -342,23 +342,26 @@ public class RunServer extends AbstractHandler {
                 "            width: 100%;\n" +
                 "        }" +
                 "</style>");
-        html.append("<h1><a href='https://blog.csdn.net/qierkang/article/details/95095954' target='_blank' style='text-decoration:none;' >Hello,This is a Jrebel & JetBrains License Server!</a></h1>");
-        html.append("<p>JetBrains Activation address was: <span style='color:red'>").append(licenseUrl).append("/{guid}");
+        html.append("<p><h3><a href='https://www.qekang.com' target='_blank' style='text-decoration:none;'>Home:)</a>&nbsp;&nbsp;&nbsp;<a " +
+                "href='https://blog.csdn.net/qierkang' target='_blank' style='text-decoration:none;'>CSDN:)</a></h3> <em>Builder:qierkang " +
+                "E-mail:xyqierkang@163.com  Wechat:qekang <span id=\"text\"></span></em></p>");
+        html.append("<h1><a href='https://blog.csdn.net/qierkang/article/details/95095954' target='_blank' style='text-decoration:none;' >Hello," +
+                "This is a Jrebel & JetBrains License Server!</a></h1>");
+//        html.append("<p>JetBrains Activation address was: <span style='color:red'>").append(licenseUrl).append("/{guid}");
         html.append("<p><h3>GUID address: <a href='https://www.guidgen.com/' target='_blank' style='text-decoration:none;'>GUID</a></h3></p>");
-        html.append("<p>Demo JRebel address was: 【<span style='color:red'>").append(licenseUrl).append("/").append(UUID.randomUUID()).append("</span>】, with any email.");
-        html.append("<p><h4>一键地址直接使用: 【<span style='color:red'>").append("http://jrebel.qekang.com").append("/").append(UUID.randomUUID()).append("</span>】</p></h4>");
-        html.append("<p><h4><span style='color:red'>").append("【公告📢：服务器到期最近在做服务迁移，有些许不稳定尽情谅解】").append("</p></h4>");
+//        html.append("<p>Demo JRebel address was: 【<span style='color:red'>").append(licenseUrl).append("/").append(UUID.randomUUID()).append
+//        ("</span>】, with any email.");
+        html.append("<p><h3>一键地址直接使用: 【<span style='color:red'>").append("https://jrebel.qekang.com").append("/").append(UUID.randomUUID()).append(
+                "</span>】</p></h3>");
         html.append("<p><h5><span style='color:black'>").append("【注：如果激活失败，检查是否升级了IDEA需要降低插件版本】").append("</p></h5>");
         html.append("<h5><span style='color:black'>").append("方法1：<p>降低IDEA>jrebel版本 2022.4.1</p>").append("</h5>");
         html.append("<h5><span style='color:black'>").append("方法2：<p>1、删掉用户名下的.jrebel文件夹，否则降级idea或降级jrebel都不管用都激活失败</p>" +
                 "<p>2、不要升级idea到2022.3 因为其内置的jrebel是最新版的2022.4.2 这个版本的jrebel应该是更改了激活方式 qekang方式激活不成功</p>" +
-                "<p>3、如果升级了idea到2022.3，则需要手动把jrebel降低到2022.4.1，然后最好删掉.jrebel文件夹，再激活。</p> 感谢网友【@勇勇勇勇勇哥】提供的思路").append("</h5>");
-        html.append("<hr/>");
-        html.append("<p><em>Builder:qierkang E-mail:xyqierkang@163.com  Wechat:qekang <span id=\"text\"></span></em></p>");
-        html.append("<p><h3><a href='https://www.qekang.com' target='_blank' style='text-decoration:none;'>Home:)</a>&nbsp;&nbsp;&nbsp;<a href='https://blog.csdn.net/qierkang' target='_blank' style='text-decoration:none;'>CSDN:)</a></h3></p>");
+                "<p>3、如果升级了idea到2022.3，则需要手动把jrebel降低到2022.4.1，然后最好删掉.jrebel文件夹，再激活。</p>").append("</h5>");
         html.append("<hr/>");
         html.append("<br/>");
-        html.append("<div>服务器到期,聚开源力量!<img src='https://www.qekang.com/wechatPay.jpeg'/><img src='https://www.qekang.com/aliPay.jpeg'/></div>");
+        html.append("<div style='color:#ff6600;font-weight:bolder'>服务器成本,聚开源力量!<img src='https://www.qekang.com/wechatPay.jpeg'/><img " +
+                "src='https://www.qekang.com/aliPay.jpeg'/></div>");
         html.append("<img src='https://www.qekang.com/code.jpg' class='code'/>");
         html.append("<br/>");
         html.append("<img class='code' src='https://img-blog.csdnimg.cn/20191127182857244.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpZXJrYW5n,size_16,color_FFFFFF,t_70' width='800' height='550'/>");
