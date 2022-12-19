@@ -16,7 +16,7 @@
 Build mavne
 
 ```
-mvn clean && install
+mvn clean install
 ```
 
 Build image
