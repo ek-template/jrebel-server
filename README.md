@@ -13,9 +13,17 @@
 
 ## Docker
 
+Build mavne
+
+```
+mvn clean && install
+```
+
 Build image
 
 ```
+docker rm -f jrebel-server
+docker rmi -f qierkang/jrebel-server
 docker build -t qierkang/jrebel-server .
 ```
 

@@ -1,4 +1,4 @@
-FROM java:8-jre-alpine
+FROM openjdk:8
 MAINTAINER https://blog.csdn.net/qierkang
 LABEL description="https://blog.csdn.net/qierkang：JrebelBrains-在线注册服务"
 ADD target/jrebel-server-1.1-SNAPSHOT-jar-with-dependencies.jar /jrebel-server.jar
