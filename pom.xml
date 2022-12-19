@@ -2,6 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.0.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.jrebel.ek</groupId>
@@ -88,39 +94,31 @@
             <url>http://mvnrepository.com/</url>
         </repository>
     </repositories>
-    <!--包含需要连接到远程插件仓库的信息-->
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-releases</id>
-            <url>http://repo.spring.io/libs-release</url>
-        </pluginRepository>
-    </pluginRepositories>
 
 
     <build>
         <finalName>jrebel-server-${project.version}</finalName>
         <plugins>
 
+            <!-- 跳过单元测试 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <skipTests>true</skipTests>
-                    <forkMode>once</forkMode>
-                    <argLine>-Dfile.encoding=UTF-8</argLine>
                 </configuration>
             </plugin>
-
+            <!-- 打包运行类 -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <!-- 与Servlet版本对应 -->
-                <version>3.1</version>
-                <configuration>
-                    <source>6</source>
-                    <target>6</target>
-                    <encoding>utf8</encoding>
-                </configuration>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <!-- 打包可运行jar包 指定程序入口RunServer-->
@@ -144,24 +142,6 @@
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <!-- 指定该Main Class为全局的唯一入口 -->
-                    <mainClass>com.jrebel.ek.RunServer</mainClass>
-                    <layout>ZIP</layout>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <!--可以把依赖的包都打包到生成的Jar包中-->
-                            <goal>repackage</goal>
                         </goals>
                     </execution>
                 </executions>
