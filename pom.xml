@@ -106,19 +106,21 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <skipTests>true</skipTests>
+                    <forkMode>once</forkMode>
+                    <argLine>-Dfile.encoding=UTF-8</argLine>
                 </configuration>
             </plugin>
-            <!-- 打包运行类 -->
+
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <!-- 与Servlet版本对应 -->
+                <version>3.1</version>
+                <configuration>
+                    <source>6</source>
+                    <target>6</target>
+                    <encoding>utf8</encoding>
+                </configuration>
             </plugin>
 
             <!-- 打包可运行jar包 指定程序入口RunServer-->
@@ -142,6 +144,25 @@
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!--                <version>2.2.6.RELEASE</version>-->
+                <configuration>
+                    <!-- 指定该Main Class为全局的唯一入口 -->
+                    <mainClass>com.jrebel.ek.RunServer</mainClass>
+                    <layout>ZIP</layout>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <!--可以把依赖的包都打包到生成的Jar包中-->
+                            <goal>repackage</goal>
                         </goals>
                     </execution>
                 </executions>
