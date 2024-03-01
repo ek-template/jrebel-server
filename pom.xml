@@ -38,6 +38,12 @@
         </developer>
     </developers>
 
+    <properties>
+        <!-- Maven Plugin Versions -->
+        <hutool.version>5.8.23</hutool.version>
+
+    </properties>
+
     <!-- 所有子模块继承 -->
     <dependencies>
         <dependency>
@@ -71,6 +77,24 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.1</version>
+        </dependency>
+        <!-- 糊涂工具包 -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
         </dependency>
     </dependencies>
 
@@ -117,8 +141,8 @@
                 <!-- 与Servlet版本对应 -->
                 <version>3.1</version>
                 <configuration>
-                    <source>6</source>
-                    <target>6</target>
+                    <source>8</source>
+                    <target>8</target>
                     <encoding>utf8</encoding>
                 </configuration>
             </plugin>

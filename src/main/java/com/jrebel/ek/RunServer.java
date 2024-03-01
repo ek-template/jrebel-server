@@ -19,6 +19,8 @@ import net.sf.json.JSONObject;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.AbstractHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -31,27 +33,26 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.date.TimeInterval;
+import cn.hutool.core.net.NetUtil;
+import cn.hutool.core.util.StrUtil;
+
 /**
- * *********************************************************
- *
+ * 服务启动类
  * @Author <a href="mailto:xyqierkang@163.com">qierkang</a>
- * Blog: https://blog.csdn.net/qierkang
- * @Title RunServer$.java
- * @Date Created in $ $
- * <p>Description: [ 服务启动类 ] </p>
- * <p>Copyright:    </p>
- * <p>Company:      </p>
- * <p>Department:   </p>
- * *********************************************************
+ * @date Created in 2018/3/1 14:34
+ * @title RunServer.java
+ * Department: Product development
  */
 public class RunServer extends AbstractHandler {
 
-
+    private static final Logger log = LoggerFactory.getLogger(RunServer.class);
     private static Map<String, String> parseArguments(String[] args) {
         if (args.length % 2 != 0) {
             throw new IllegalArgumentException("Error in argument's length ");
         }
-        Map<String, String> params = new HashMap<String, String>();
+        Map<String, String> params = new HashMap<>();
         for (int i = 0, len = args.length; i < len; ) {
             String argName = args[i++];
 
@@ -76,19 +77,46 @@ public class RunServer extends AbstractHandler {
         Server server = new Server(Integer.parseInt(port));
         server.setHandler(new RunServer());
         server.start();
-        System.out.println("是，程序员设计了程序，还是，程序造就了程序员？程序，程序员——你的名字，我的姓氏");
-        System.out.println("@Author xyqierkang@163.com\n" + "Blog https://blog.csdn.net/qierkang Home https://www.qekang.com");
-        System.out.println("License Server started at http://localhost:" + port);
-        System.out.println("JetBrains Activation address was: http://localhost:" + port + "/");
-        System.out.println("JRebel address was: http://localhost:" + port + "/{tokenname}, with any email.");
-        System.out.println("JRebel address was: http://localhost:" + port + "/{guid}(eg:http://localhost:" + port + "/" + UUID.randomUUID().toString() + "), with any email.");
+        TimeInterval timer = DateUtil.timer();
+        log.info(
+                "\n"
+                        + "                   _ooOoo_\n"
+                        + "                  o8888888o\n"
+                        + "                  88\" . \"88\n"
+                        + "                  (| -_- |)\n"
+                        + "                  O\\  =  /O\n"
+                        + "               ____/`---'\\____\n"
+                        + "             .'  \\\\|     |//  `.\n"
+                        + "            /  \\\\|||  :  |||//  \\\n"
+                        + "           /  _||||| -:- |||||-  \\\n"
+                        + "           |   | \\\\\\  -  /// |   |\n"
+                        + "           | \\_|  ''\\---/''  |   |\n"
+                        + "           \\  .-\\__  `🫵`  ___/-. /\n"
+                        + "         ___`. .'  /--.--\\  `. . __\n"
+                        + "      .\"\" '<  `.___\\_<->_/___.'  >'\"\".\n"
+                        + "     | | :  `- \\`.;`\\ _ /`;.`/ - ` : | |\n"
+                        + "     \\  \\ `-.   \\_ __\\ /__ _/   .-` /  /\n"
+                        + "======`-.____`-.___\\_____/___.-`____.-'======\n"
+                        + "                   `=---='\n"
+                        + "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"
+                        + "         佛祖保佑       永无BUG\n"
+                        + "---------------------------------------------  \n");
+        log.info("是，程序员设计了程序，还是，程序造就了程序员？程序，程序员——你的名字，我的姓氏");
+        log.info("\n@Author xyqierkang@163.com\nBlog https://blog.csdn.net/qierkang\nHome https://www.qekang.com");
+        log.info("Service Startup success：https://{}:{}", NetUtil.localIpv4s().iterator().next(), port);
+        log.info("Spring boot 启动初始化了, ->> 请求耗时：{}秒", timer.intervalSecond());
+        log.info("License Server started at http://localhost:{}", port);
+        log.info("JetBrains Activation address was: http://localhost:{}/", port);
+        log.info("JRebel address was: http://localhost:{}/{你的token地址}, with any email.", port);
+        log.info("JRebel address 例如: http://localhost:{}/{}, with any email.", port, UUID.randomUUID());
         server.join();
+
     }
 
     @Override
     public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        System.out.println(target);
+        log.info("handle target REQUEST 接收到请求 URL method: {}", target);
         if ("/".equals(target)) {
             indexHandler(target, baseRequest, request, response);
         } else if ("/jrebel/leases".equals(target)) {
@@ -107,6 +135,8 @@ public class RunServer extends AbstractHandler {
             obtainTicketHandler(target, baseRequest, request, response);
         } else if ("/rpc/releaseTicket.action".equals(target)) {
             releaseTicketHandler(target, baseRequest, request, response);
+        } else if ("/agent/features".equals(target)) {
+            jrebelLeasesHandler(target, baseRequest, request, response);
         } else {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
         }
@@ -161,8 +191,12 @@ public class RunServer extends AbstractHandler {
         response.setStatus(HttpServletResponse.SC_OK);
         String clientRandomness = request.getParameter("randomness");
         String username = request.getParameter("username");
+        String definedUserId = request.getParameter("definedUserId");
         String guid = request.getParameter("guid");
-        System.out.println(((Request) request).getParameters());
+        String parameters = StrUtil.toString(((Request) request).getParameters());
+        log.info("jrebelLeasesHandler 接收注册信息 URL" +
+                        "\n  parameters: {} getParameters: {}",
+                target, parameters);
         boolean offline = Boolean.parseBoolean(request.getParameter("offline"));
         String validFrom = "null";
         String validUntil = "null";
@@ -170,9 +204,9 @@ public class RunServer extends AbstractHandler {
             String clientTime = request.getParameter("clientTime");
             String offlineDays = request.getParameter("offlineDays");
             //long clinetTimeUntil = Long.parseLong(clientTime) + Long.parseLong(offlineDays)  * 24 * 60 * 60 * 1000;
-            long clinetTimeUntil = Long.parseLong(clientTime) + 180L * 24 * 60 * 60 * 1000;
+            long clientTimeUntil = Long.parseLong(clientTime) + 180L * 24 * 60 * 60 * 1000;
             validFrom = clientTime;
-            validUntil = String.valueOf(clinetTimeUntil);
+            validUntil = String.valueOf(clientTimeUntil);
         }
         baseRequest.setHandled(true);
         String jsonStr = "{\n" +
@@ -198,7 +232,6 @@ public class RunServer extends AbstractHandler {
                 "    \"licenseValidFrom\": 1490544001000,\n" +
                 "    \"licenseValidUntil\": 1691839999000\n" +
                 "}";
-
         JSONObject jsonObject = JSONObject.fromObject(jsonStr);
         if (clientRandomness == null || username == null || guid == null) {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
@@ -307,7 +340,6 @@ public class RunServer extends AbstractHandler {
                 "        var time=year+\"-\"+(month+1)+\"-\"+day+\" \"+hh+\":\"+mm+\":\"+ss;\n" +
                 "        document.getElementById(\"text\").innerHTML = time;\n" +
                 "    }" +
-                "" +
                 "</script>\n" +
                 "<style>\n" +
                 "    body {\n" +
@@ -361,11 +393,12 @@ public class RunServer extends AbstractHandler {
                 "<p>3、如果升级了idea到2022.3，则需要手动把jrebel降低到2022.4.1，然后最好删掉.jrebel文件夹，再激活。</p>").append("</h5>");
         html.append("<hr/>");
         html.append("<br/>");
-        html.append("<div style='color:#ff6600;font-weight:bolder'>服务器成本,聚开源力量!<img src='https://www.qekang.com/wechatPay.jpeg'/><img " +
-                "src='https://www.qekang.com/aliPay.jpeg'/></div>");
-        html.append("<img src='https://www.qekang.com/code.jpg' class='code'/>");
+        html.append("<div style='color:#ff6600;font-weight:bolder'>服务器成本,聚开源力量!<img src='https://qierkang-default.oss-cn-nanjing.aliyuncs" +
+                ".com/wechatPay.jpeg'/><img " +
+                "src='https://qierkang-default.oss-cn-nanjing.aliyuncs.com/ali-pay.jpeg'/></div>");
+        html.append("<img src='https://qierkang-default.oss-cn-nanjing.aliyuncs.com/code.jpg' class='code'/>");
         html.append("<br/>");
-        html.append("<img class='code' src='https://img-blog.csdnimg.cn/20191127182857244.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpZXJrYW5n,size_16,color_FFFFFF,t_70' width='800' height='550'/>");
+        html.append("<img class='code' src='https://qierkang-default.oss-cn-nanjing.aliyuncs.com/20200508145110330.png' width='800' height='550'/>");
         html.append("<br/><br/><br/>");
         response.getWriter().println(html);
     }
