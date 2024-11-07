@@ -303,8 +303,6 @@ public class RunServer extends AbstractHandler {
         response.setContentType("text/html; charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
         baseRequest.setHandled(true);
-        // 拼接服务器地址
-//        String licenseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
         StringBuffer html = new StringBuffer();
         html.append(
                 "<meta charset='UTF-8'>\n"
@@ -368,11 +366,11 @@ public class RunServer extends AbstractHandler {
                 "    text-align: center;\n" +
                 "    font-size: 14px;\n" +
                 "    padding: 10px;\n" +
-                "    border: 1px solid #990;\n" +
+                "    border: 0px solid #990;\n" +
                 "    background-color: white;\n" +
-                "    box-shadow: 1px 1px 5px #333333;\n" +
+                //"    box-shadow: 1px 1px 5px #333333;\n" +
                 "    width: 150px;\n" +
-                "    transform: rotate(25deg);\n" +
+                "    transform: rotate(20deg);\n" +
                 "    margin-right: 100px;}\n" +
                 "        img{\n" +
                 "            width: 100%;\n" +
@@ -393,12 +391,9 @@ public class RunServer extends AbstractHandler {
                 "<p>3、如果升级了idea到2022.3，则需要手动把jrebel降低到2022.4.1，然后最好删掉.jrebel文件夹，再激活。</p>").append("</h5>");
         html.append("<hr/>");
         html.append("<br/>");
-        html.append("<div style='color:#ff6600;font-weight:bolder'>服务器成本,聚开源力量!<img src='https://qierkang-default.oss-cn-nanjing.aliyuncs" +
-                ".com/wechatPay.jpeg'/><img " +
-                "src='https://qierkang-default.oss-cn-nanjing.aliyuncs.com/ali-pay.jpeg'/></div>");
-        html.append("<img src='https://qierkang-default.oss-cn-nanjing.aliyuncs.com/code.jpg' class='code'/>");
-        html.append("<br/>");
-        html.append("<img class='code' src='https://qierkang-default.oss-cn-nanjing.aliyuncs.com/20200508145110330.png' width='800' height='550'/>");
+        html.append("<div style='color:#ff6600;font-weight:bolder'>服务器成本,聚开源力量!<img src='http://jrebel-default.oss-cn-nanjing.aliyuncs.com/wechat-pay.jpg'/><img " +
+                "src='http://jrebel-default.oss-cn-nanjing.aliyuncs.com/ali-pay.jpg'/></div>");
+        html.append("<img src='http://jrebel-default.oss-cn-nanjing.aliyuncs.com/code.jpg' class='code'/>");
         html.append("<br/><br/><br/>");
         response.getWriter().println(html);
     }

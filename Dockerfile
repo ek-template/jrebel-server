@@ -16,7 +16,7 @@ ENV TZ=Asia/Shanghai
 # 将 Git 提交信息添加到镜像的元数据中
 LABEL GIT_COMMIT=${GIT_COMMIT}
 LABEL description="https://blog.csdn.net/qierkang：JrebelBrains-在线注册服务"
-LABEL description="https://www.qekang.com"
+LABEL description="http://www.qekang.com"
 LABEL Blog="https://blog.csdn.net/qierkang"
 # 复制构建好的 JAR 文件到容器中
 COPY target/jrebel-server-1.1-SNAPSHOT.jar /jrebel-server.jar
