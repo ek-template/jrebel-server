@@ -1,5 +1,5 @@
 
-## [Jrebel 热部署插件服务 & Jet Brains License Server for Java](http://jrebel.qekang.com)
+## [Jrebel热部署插件服务 & License Server for Java](http://jrebel.qekang.com)
 
 ---
 <font face="微软雅黑" size=2 color=#A9A9A9 >版权声明：内容供技术友人学习使用，请勿外传！转载请附上作者信息</font>
