@@ -61,6 +61,17 @@ docker run -d --name jrebel-server --restart always -e PORT=9001 -p 9001:9001 qi
 # 启动完成过后 默认端口 9001
 docker ps -a
 ```
+
+### 4.代码推送仓库
+
+```shell
+# 如果发布到  GitHub
+git push -f git@github.com:ek-template/jrebel-server.git master
+
+# 如果发布到  Gitee
+git push -f git@gitee.com:ek-plugs/jrebel-server.git master
+
+```
 </details>
 
 ----------------------------------
